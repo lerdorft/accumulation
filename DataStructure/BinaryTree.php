@@ -350,6 +350,7 @@ class BinaryTree
                 $queue->enqueue($node->right);
             }
 
+            //每一层遍历完成后，层高+1
             if ($count == $nextCount) {
                 $count = 0;
                 $nextCount = $queue->count();
