@@ -360,11 +360,65 @@ class BinaryTree
 
         return $depth;
     }
+
+    /**
+     * 递归方式反转二叉树
+     *
+     * @param $node
+     * @return mixed
+     */
+    public function invertTree($node)
+    {
+        if ($node == null) {
+            return $node;
+        }
+
+        $tmpLeft = $node->left;
+
+        $node->left = $this->invertTree($node->right);
+        $node->right = $this->invertTree($tmpLeft);
+
+        return $node;
+    }
+
+    /**
+     * 非递归方式，反转二叉树
+     *
+     * @return Node
+     */
+    public function invertTree2()
+    {
+        $node = $this->root;
+
+        if ($node == null) {
+            return $node;
+        }
+
+        $queue = new \SplQueue();
+        $queue->enqueue($node);
+
+        while (!$queue->isEmpty()) {
+            $nodeTmp = $queue->pop();
+
+            //左右分支交换
+            list($nodeTmp->left, $nodeTmp->right) = [$nodeTmp->right, $nodeTmp->left];
+
+            if ($nodeTmp->left) {
+                $queue->enqueue($nodeTmp->left);
+            }
+
+            if ($nodeTmp->right) {
+                $queue->enqueue($nodeTmp->right);
+            }
+        }
+
+        return $node;
+    }
 }
 
 $numbers = [8, 3, 10, 1, 4, 14, 6, 7, 13];
 $binaryTree = new BinaryTree($numbers);
 $binaryTree->generate();
 echo '<pre>';
-echo $binaryTree->getDepth2();
+print_r($binaryTree->invertTree2());
 echo '<pre>';
