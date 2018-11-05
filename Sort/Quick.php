@@ -47,7 +47,7 @@ function quickSort2(array &$arr, $start, $end)
         return ;
     }
 
-    $i = $start + 1;
+    $i = $start;
     $j = $end;
 
     $pivot = $arr[$start];
