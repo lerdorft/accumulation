@@ -31,4 +31,26 @@ for ($i = 1; $i <= $row; $i++) {
 	echo PHP_EOL;
 }
 
-exit;
+/**
+ * 杨辉三角
+ *
+ * @param $row int 行
+ * @param $column int 列
+ * @return int
+ */
+function yangHuiTriangle($row, $column)
+{
+    $arr = [];
+
+    for ($i = 1; $i <= $row; $i++) {
+        for ($j = 1; $j <= $i; $j++) {
+            if ($j == 1 || $j == $i) {
+                $arr[$i][$j] = 1;
+            } else {
+                $arr[$i][$j] = $arr[$i - 1][$j - 1] + $arr[$i - 1][$j];
+            }
+        }
+    }
+
+    return $arr[$row][$column];
+}
