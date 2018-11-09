@@ -414,6 +414,35 @@ class BinaryTree
 
         return $node;
     }
+
+    /**
+     * 获取节点间的路径
+     *
+     * @param $node
+     * @param $key
+     * @param array $path
+     * @return bool
+     */
+    public function getNodePath($node, $key, array &$path)
+    {
+        array_push($path, $node->key);
+
+        if ($node->key == $key) {
+            return true;
+        }
+
+        if ($node->left != null && $this->getNodePath($node->left, $key, $path)) {
+            return true;
+        }
+
+        if ($node->right != null && $this->getNodePath($node->right, $key, $path)) {
+            return true;
+        }
+
+        array_pop($path);
+
+        return false;
+    }
 }
 
 $numbers = [8, 3, 10, 1, 4, 14, 6, 7, 13];
