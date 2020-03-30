@@ -7,7 +7,7 @@
  */
 
 /**
- * 冒泡排序
+ * 冒泡排序，稳定排序
  *
  * https://mp.weixin.qq.com/s/wO11PDZSM5pQ0DfbQjKRQA
  *

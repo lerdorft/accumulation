@@ -7,6 +7,8 @@
  */
 
 /**
+ * 插入排序，稳定排序，O(n2)
+ *
  * @param array $numbers
  * @return array
  */
