@@ -48,6 +48,16 @@ class Singleton
     }
 
     /**
+     * 防止反序列化单例
+     *
+     * @throws Exception
+     */
+    public function __wakeup()
+    {
+        throw new \Exception('不可反序列化单例.');
+    }
+
+    /**
      * 测试方法
      */
     public function sayHello()
